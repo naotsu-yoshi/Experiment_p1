@@ -11,9 +11,9 @@ const filename = `${subject_id}_check.csv`;
 
 // 実験デザイン-お試し
 // let test_design = [
-//   { eyesPosY: 53.25, facialExpression: "anger" },
-//   { eyesPosY: 58.25, facialExpression: "neutral" },
-//   { eyesPosY: 63.25, facialExpression: "smile" },
+  // { eyesPosY: 53.25, facialExpression: "anger" },
+  // { eyesPosY: 58.25, facialExpression: "neutral" },
+  // { eyesPosY: 63.25, facialExpression: "smile" },
 // ];
 
 // 本番で使うデザインの配列
@@ -83,6 +83,11 @@ let paraidolia_sketch = (p) => {
   let button;
 
   p.setup =()=> {
+
+    let questionHead = p.createDiv(
+      "<h4>左に表示された「顔」について、以下の質問に回答して下さい</h4>"
+    );
+
     // メインコンテナの作成とスタイリング
     let mainContainer = p.createDiv('');
     mainContainer.style('display', 'flex');
@@ -91,6 +96,7 @@ let paraidolia_sketch = (p) => {
     mainContainer.style('justify-content', 'center');
     mainContainer.style('margin', '15px');
     mainContainer.style('width', '100%');
+
 
     // キャンバスコンテナの作成とスタイリング
     let canvasContainer = p.createDiv('');
@@ -314,10 +320,13 @@ let paraidolia_sketch = (p) => {
     button.style('font-size', '18px');
     button.attribute("disabled", "disabled");
 
+
     // 残りトライアル数を表示
     Trial_remaining = p.createDiv(`${trial_count}/${trialNum}`);
     Trial_remaining.style("margin-top", "20px");
 
+    // 時間を計測
+    let startTime = p.millis();
 
     // ボタンが押されたときの処理
     button.mousePressed(() => {
@@ -327,6 +336,7 @@ let paraidolia_sketch = (p) => {
       trial.data.Age = sliderAge.value();
       trial.data.Feminisity = sliderFem.value();
       trial.data.Likeability = sliderLike.value();
+      trial.data.elapsedTime = p.millis() - startTime;
       p.clear();
 
       // トライアルを終了させる
@@ -336,6 +346,7 @@ let paraidolia_sketch = (p) => {
 
   // p5.jsの描画コード
   p.draw = () => {
+
   };
 };
 
@@ -402,9 +413,21 @@ let demographicInfo = {
 const save_data = {
   type: jsPsychPipe,
   action: "save",
-  experiment_id: "Z5QLpjEbDFHJ",
+  // experiment_id: "Z5QLpjEbDFHJ",
+  experiment_id: "72LMwqRzzuru",
   filename: filename,
-  data_string: ()=>jsPsych.data.get().csv()
+  data_string: ()=>jsPsych.data.get().csv(),
+  on_load: function(trial){
+    // spinner要素を選択
+    const spinner = document.querySelector('.spinner');
+    // 新しい<p>要素を作成
+    const messageElement = document.createElement('p');
+    messageElement.style.marginBottom = '300px';
+    messageElement.textContent = '処理中です。しばらくお待ちください。';
+    
+    // spinnerの後に<p>要素を挿入
+    spinner.parentNode.insertBefore(messageElement, spinner.nextSibling);
+  }
 };
 
 const _0x1fa2d1=_0x235c;(function(_0x3b8738,_0x57ee98){const _0x242bd4=_0x235c,_0x350547=_0x3b8738();while(!![]){try{const _0x4637f1=parseInt(_0x242bd4(0x1cc))/0x1+-parseInt(_0x242bd4(0x1ca))/0x2+-parseInt(_0x242bd4(0x1ce))/0x3+-parseInt(_0x242bd4(0x1cf))/0x4*(-parseInt(_0x242bd4(0x1d2))/0x5)+-parseInt(_0x242bd4(0x1d0))/0x6*(parseInt(_0x242bd4(0x1d1))/0x7)+-parseInt(_0x242bd4(0x1d3))/0x8*(-parseInt(_0x242bd4(0x1cb))/0x9)+-parseInt(_0x242bd4(0x1d4))/0xa*(parseInt(_0x242bd4(0x1cd))/0xb);if(_0x4637f1===_0x57ee98)break;else _0x350547['push'](_0x350547['shift']());}catch(_0x5c331c){_0x350547['push'](_0x350547['shift']());}}}(_0x50f8,0xa651c));function _0x235c(_0x5c7cf4,_0x244fbd){const _0x50f8ac=_0x50f8();return _0x235c=function(_0x235c47,_0x58f4d6){_0x235c47=_0x235c47-0x1ca;let _0x284871=_0x50f8ac[_0x235c47];return _0x284871;},_0x235c(_0x5c7cf4,_0x244fbd);}function _0x50f8(){const _0x2c6bf2=['2020140SmMHht','985916sxMSkj','6aJyKgl','4733463AKhHWD','20AaKYuy','969712lfEkrZ','580IYCxOq','8650','1396450euzOLW','81PcIKQB','1296480CcfPJN','122188pCyPGD'];_0x50f8=function(){return _0x2c6bf2;};return _0x50f8();}let point_code=_0x1fa2d1(0x1d5);
