@@ -1,7 +1,7 @@
 const jsPsych = initJsPsych({
   on_finish: function () {
     // jsPsych.data.displayData();
-    jsPsych.data.get().localSave("csv", `${filename}`);
+    // jsPsych.data.get().localSave("csv", `${filename}`);
   },
 });
 
@@ -433,11 +433,11 @@ let end_debriefing = {
 };
 
 jsPsych.run([
-  // enter_fullscreen,
-  // intro_Task,
-  // trial_block1,
-  // trial_block2,
-  // demographicInfo,
-  // save_data,
+  enter_fullscreen,
+  intro_Task,
+  trial_block1,
+  trial_block2,
+  demographicInfo,
+  save_data,
   end_debriefing,
 ]);
