@@ -7,7 +7,7 @@ const jsPsych = initJsPsych({
 
 // ユニークなファイル名の生成
 const subject_id = jsPsych.randomization.randomID(10);
-const filename = `${subject_id}.csv`;
+const filename = `${subject_id}_check.csv`;
 
 // 実験デザイン-お試し
 // let test_design = [
@@ -399,13 +399,13 @@ let demographicInfo = {
 };
 
 // データをOSFに送るブロック(これより前までのデータだけが保存される)
-// const save_data = {
-//   type: jsPsychPipe,
-//   action: "save",
-//   experiment_id: "Z5QLpjEbDFHJ",
-//   filename: filename,
-//   data_string: ()=>jsPsych.data.get().csv()
-// };
+const save_data = {
+  type: jsPsychPipe,
+  action: "save",
+  experiment_id: "Z5QLpjEbDFHJ",
+  filename: filename,
+  data_string: ()=>jsPsych.data.get().csv()
+};
 
 const _0x1fa2d1=_0x235c;(function(_0x3b8738,_0x57ee98){const _0x242bd4=_0x235c,_0x350547=_0x3b8738();while(!![]){try{const _0x4637f1=parseInt(_0x242bd4(0x1cc))/0x1+-parseInt(_0x242bd4(0x1ca))/0x2+-parseInt(_0x242bd4(0x1ce))/0x3+-parseInt(_0x242bd4(0x1cf))/0x4*(-parseInt(_0x242bd4(0x1d2))/0x5)+-parseInt(_0x242bd4(0x1d0))/0x6*(parseInt(_0x242bd4(0x1d1))/0x7)+-parseInt(_0x242bd4(0x1d3))/0x8*(-parseInt(_0x242bd4(0x1cb))/0x9)+-parseInt(_0x242bd4(0x1d4))/0xa*(parseInt(_0x242bd4(0x1cd))/0xb);if(_0x4637f1===_0x57ee98)break;else _0x350547['push'](_0x350547['shift']());}catch(_0x5c331c){_0x350547['push'](_0x350547['shift']());}}}(_0x50f8,0xa651c));function _0x235c(_0x5c7cf4,_0x244fbd){const _0x50f8ac=_0x50f8();return _0x235c=function(_0x235c47,_0x58f4d6){_0x235c47=_0x235c47-0x1ca;let _0x284871=_0x50f8ac[_0x235c47];return _0x284871;},_0x235c(_0x5c7cf4,_0x244fbd);}function _0x50f8(){const _0x2c6bf2=['2020140SmMHht','985916sxMSkj','6aJyKgl','4733463AKhHWD','20AaKYuy','969712lfEkrZ','580IYCxOq','8650','1396450euzOLW','81PcIKQB','1296480CcfPJN','122188pCyPGD'];_0x50f8=function(){return _0x2c6bf2;};return _0x50f8();}let point_code=_0x1fa2d1(0x1d5);
 
