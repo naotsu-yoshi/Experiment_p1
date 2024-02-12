@@ -7,7 +7,7 @@ const jsPsych = initJsPsych({
 
 // ユニークなファイル名の生成
 const subject_id = jsPsych.randomization.randomID(10);
-const filename = `${subject_id}_check.csv`;
+const filename = `${subject_id}.csv`;
 
 // 実験デザイン-お試し
 // let test_design = [
